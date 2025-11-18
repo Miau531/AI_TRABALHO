@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - O Mundo do Trabalho Medieval</title>
+    <link rel="icon" href="Imagens/logo.png">
+    <link rel="stylesheet" href="css/Quiz.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <div id="quiz-content">
+            <h1>⚔️ Quiz: O Mundo do Trabalho na Idade Média Ibérica</h1>
+            
+            <div class="progress-text">
+                <span id="current-question">1</span> de <span id="total-questions">8</span>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            
+            <div class="quiz-intro">
+                <p>Bem-vindo ao quiz! Responda às perguntas para descobrir qual profissão medieval combina mais com você.</p>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Perguntas serão inseridas aqui pelo JavaScript -->
+            </div>
+
+            <div class="buttons" id="quiz-buttons">
+                <button id="prev-btn" onclick="previousQuestion()" disabled>← Anterior</button>
+                <button id="next-btn" onclick="nextQuestion()">Próximo →</button>
+                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Enviar Respostas</button>
+            </div>
+        </div>
+
+        <div id="result-container">
+            <div id="result-content"></div>
+            <button id="restart-btn" onclick="restartQuiz()">🔄 Fazer Quiz Novamente</button>
+        </div>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>
