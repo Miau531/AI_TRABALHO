@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz trabalho mediaval</title>
+    <title>Quiz - O Mundo do Trabalho Medieval</title>
     <link rel="icon" href="Imagens/logo.png">
-    <link rel="stylesheet" href="css/Fundo.css">
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/Quiz.css">
 </head>
 <body>
+    <div id="quiz-container">
+        
+            
+            <div class="quiz-questions" id="quiz-questions">
+                <!-- Perguntas serão inseridas aqui pelo JavaScript -->
+            </div>
 
-    <div id="landing-page">
-        <h1>O Mundo do Trabalho na Idade Média Ibérica</h1>
-
-        <p>A sociedade medieval era dividida entre o campo e a cidade. Através de 10 escolhas simples sobre o seu modo de vida, descubra qual das quatro profissões – Camponês, Ferreiro, Tecelão ou Mercador – teria sido a sua na Península Ibérica do século XIII.</p>
-
-       <a href="Quiz.html"> <button id="startButton">COMEÇAR A SUA JORNADA MEDIEVAL</button> </a>
-    </div>
-
-    <div id="quiz-container" style="display: none;">
+            <div class="buttons" id="quiz-buttons">
+                <button id="prev-btn" onclick="previousQuestion()" disabled>← Anterior</button>
+                <button id="next-btn" onclick="nextQuestion()">Próximo →</button>
+                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Enviar Respostas</button>
+            </div>
         </div>
 
+        <div id="result-container">
+            <div id="result-content"></div>
+            <button id="restart-btn" onclick="restartQuiz()">🔄 Fazer Quiz Novamente</button>
+        </div>
+    </div>
 
-    
+    <script src="js/quiz.js"></script>
 </body>
 </html>
