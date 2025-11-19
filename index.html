@@ -5,29 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - O Mundo do Trabalho Medieval</title>
     <link rel="icon" href="Imagens/logo.png">
-    <link rel="stylesheet" href="css/Quiz.css">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
-    <div id="quiz-container">
-        
+    <div class="container">
+        <div class="landing-card">
+            <div class="landing-icon">⚔️</div>
             
-            <div class="quiz-questions" id="quiz-questions">
-                <!-- Perguntas serão inseridas aqui pelo JavaScript -->
+            <h1 class="landing-title">O Mundo do Trabalho na Idade Média Ibérica</h1>
+            
+            <p class="landing-subtitle">Descubra qual profissão medieval combina mais com você</p>
+            
+            <p class="landing-description">
+                A sociedade medieval era fascinante e diversa. Através de 10 perguntas simples sobre o seu modo de vida, vamos descobrir qual profissão – Ferreiro, Cavaleiro, Escriba ou Monge – teria sido a sua na Península Ibérica do século XIII.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-text">2 minutos</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">❓</div>
+                    <div class="feature-text">10 perguntas</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-text">Divertido</div>
+                </div>
             </div>
 
-            <div class="buttons" id="quiz-buttons">
-                <button id="prev-btn" onclick="previousQuestion()" disabled>← Anterior</button>
-                <button id="next-btn" onclick="nextQuestion()">Próximo →</button>
-                <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Enviar Respostas</button>
-            </div>
-        </div>
+            <a href="Quiz.html" class="cta-button">Iniciar Quiz</a>
 
-        <div id="result-container">
-            <div id="result-content"></div>
-            <button id="restart-btn" onclick="restartQuiz()">🔄 Fazer Quiz Novamente</button>
+            <div class="landing-footer">
+                <p>✨ Prepare-se para uma jornada pela Idade Média! ✨</p>
+            </div>
         </div>
     </div>
-
-    <script src="js/quiz.js"></script>
 </body>
 </html>
