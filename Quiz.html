@@ -31,7 +31,21 @@
             <div class="buttons" id="quiz-buttons">
                 <button id="prev-btn" onclick="previousQuestion()" disabled>← Anterior</button>
                 <button id="next-btn" onclick="nextQuestion()">Próximo →</button>
+                <button id="continue-btn" onclick="continueFromFlip()" style="display: none;">✓ Continuar</button>
                 <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Enviar Respostas</button>
+            </div>
+        </div>
+
+        <!-- Overlay do Flip Card -->
+        <div id="flip-overlay" class="flip-overlay hidden">
+            <div class="flip-card-container">
+                <div class="flip-card flipped">
+                    <div class="flip-front"></div>
+                    <div class="flip-back">
+                        <div class="flip-icon" id="flip-icon">🏰</div>
+                        <div class="flip-text" id="flip-text">Texto descritivo</div>
+                    </div>
+                </div>
             </div>
         </div>
 

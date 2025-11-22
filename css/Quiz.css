@@ -18,6 +18,28 @@ body {
     padding: 20px;
 }
 
+/* Header decorativo */
+.quiz-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.quiz-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    padding: 8px 16px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.quiz-brand img { width: 42px; height: 42px; border-radius: 6px; }
+
+.quiz-brand h2 { font-size: 18px; color: #fff; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
 /* Container principal */
 #quiz-container {
     
@@ -64,11 +86,11 @@ h1 {
 }
 
 .question-card {
-    background: #f8f9fa;
-    border-left: 4px solid #3498db;
-    padding: 20px;
+    background: transparent;
+    border-left: none;
+    padding: 10px 0 20px 0;
     margin-bottom: 20px;
-    border-radius: 8px;
+    border-radius: 0;
     display: none;
     animation: fadeIn 0.3s ease-in;
 }
@@ -93,6 +115,15 @@ h1 {
     font-weight: 600;
 }
 
+/* Melhor contraste do texto da pergunta (leve sombra e marcador) */
+.question-card h3 {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
 .question-number {
     color: #3498db;
     font-weight: bold;
@@ -100,15 +131,24 @@ h1 {
     margin-bottom: 8px;
 }
 
-/* Opções de resposta em cartões */
+/* Opções de resposta - Estilo Baralho */
 .options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    perspective: 1000px;
 }
 
 .option {
     position: relative;
+    width: 100%;
+    height: 165px;
+    min-width: 120px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .option input[type="radio"] {
@@ -116,32 +156,83 @@ h1 {
 }
 
 .option label {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     color: #2c3e50;
-    font-size: 15px;
-    padding: 20px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background-color: white;
+    font-size: 1.15em;
+    padding: 14px;
+    border: 2.5px solid #3a4ed8;
+    border-radius: 18px;
+    transition: all 0.18s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: linear-gradient(135deg, #fffbe6 0%, #f8f9fa 100%);
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 18px rgba(58, 78, 216, 0.10), 0 0 1px rgba(0,0,0,0.08) inset;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    word-break: break-word;
+    white-space: normal;
+    outline: none;
+    line-height: 1.3;
+}
+.option label:hover, .option input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #e3eaff 0%, #d0e6ff 100%);
+    border-color: #1a237e;
+    color: #1a237e;
+    box-shadow: 0 8px 24px rgba(26,35,126,0.13), 0 0 1px rgba(0,0,0,0.08) inset;
+}
+.option label:hover, .option input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #e3eaff 0%, #d0e6ff 100%);
+    border-color: #1a237e;
+    color: #1a237e;
+    box-shadow: 0 8px 24px rgba(26,35,126,0.13), 0 0 1px rgba(0,0,0,0.08) inset;
+}
+
+/* Efeito de brilho antes do cartão */
+.option label::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
 }
 
 .option label:hover {
     border-color: #3498db;
-    background-color: #f0f7ff;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(52, 152, 219, 0.35),
+                0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+.option label:hover::before {
+    left: 100%;
+    opacity: 1;
 }
 
 .option input[type="radio"]:checked + label {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
     color: white;
-    border-color: #2980b9;
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-    transform: scale(1.02);
+    transform: translateY(-10px) scale(1.05) rotateX(-3deg);
+    box-shadow: 0 20px 40px rgba(39, 174, 96, 0.35),
+                0 8px 20px rgba(39, 174, 96, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.option input[type="radio"]:checked + label::before {
+    left: 100%;
+    opacity: 1;
 }
 
 /* Botões */
@@ -163,6 +254,33 @@ button {
     transition: all 0.3s ease;
 }
 
+/* Botões mais visíveis e com ícones */
+#prev-btn, #next-btn, #submit-btn, #restart-btn {
+    padding: 14px 22px;
+    font-size: 15px;
+    border-radius: 12px;
+}
+
+#prev-btn { background: rgba(255,255,255,0.08); color: #fff; }
+#prev-btn:hover { background: rgba(255,255,255,0.12); }
+
+#next-btn { background: linear-gradient(90deg,#4aa3e0,#2d82c6); color: white; }
+
+#continue-btn {
+    background: linear-gradient(90deg, #27ae60, #229954);
+    color: white;
+    width: 100%;
+}
+
+#continue-btn:hover {
+    background: linear-gradient(90deg, #229954, #1e8449);
+    transform: translateY(-2px);
+}
+
+#submit-btn { background: linear-gradient(90deg,#2ecc71,#27ae60); color: white; }
+
+#restart-btn { background: linear-gradient(90deg,#4aa3e0,#2d82c6); color: white; border: none; }
+
 #prev-btn {
     background-color: #95a5a6;
     color: white;
@@ -179,6 +297,11 @@ button {
     transform: none;
 }
 
+#next-btn:disabled {
+    background: rgba(255,255,255,0.3);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 #next-btn {
     background-color: #3498db;
     color: white;
@@ -249,6 +372,31 @@ button {
     text-align: left;
 }
 
+/* Confetti container (positioned above result) */
+.confetti-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    opacity: 0.95;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
 .result-content h2 {
     color: #2c3e50;
     margin-bottom: 10px;
@@ -272,31 +420,411 @@ button {
 }
 
 /* Responsividade */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .options {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+    .options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
     #quiz-container {
         padding: 25px;
     }
 
     h1 {
-        font-size: 22px;
+        font-size: 24px;
     }
 
-    .buttons {
-        flex-direction: column;
+    .quiz-intro p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #quiz-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .quiz-intro p {
+        font-size: 14px;
+        margin-bottom: 20px;
     }
 
     .question-card h3 {
         font-size: 16px;
+        padding: 10px 12px;
+    }
+
+    .options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .option {
+        width: 100%;
+        min-width: auto;
+        max-width: 100%;
+        height: auto;
+        min-height: 100px;
     }
 
     .option label {
-        padding: 15px;
-        font-size: 14px;
+        padding: 10px;
+        font-size: 13px;
+        min-height: 100px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+
+    .progress-text {
+        font-size: 13px;
     }
 }
+
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+    }
+
+    #quiz-container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding-bottom: 12px;
+    }
+
+    .quiz-intro p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .question-number {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .question-card h3 {
+        font-size: 14px;
+        padding: 8px 10px;
+        margin-bottom: 15px;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .option {
+        width: 100%;
+        min-width: auto;
+        max-width: 100%;
+        height: auto;
+        min-height: 90px;
+    }
+
+    .option label {
+        padding: 8px;
+        font-size: 12px;
+        min-height: 90px;
+        line-height: 1.2;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px !important;
+        font-size: 13px !important;
+    }
+
+    .progress-text {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .progress-bar {
+        height: 6px;
+        margin-bottom: 20px;
+    }
+
+    .result-content h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .result-content p {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .result-icon {
+        font-size: 48px !important;
+    }
+
+    /* Flip card móvel */
+    .flip-card-container {
+        width: 90vw;
+        max-width: 280px;
+        height: 320px;
+    }
+
+    .flip-content {
+        padding: 12px !important;
+    }
+
+    .flip-selected .flip-icon {
+        font-size: 40px !important;
+    }
+
+    .flip-selected .flip-text {
+        font-size: 11px !important;
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    #quiz-container {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 16px;
+        margin-bottom: 8px;
+        padding-bottom: 10px;
+    }
+
+    .quiz-intro p {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .question-card h3 {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    .options {
+        gap: 5px;
+    }
+
+    .option label {
+        padding: 6px;
+        font-size: 11px;
+        min-height: 80px;
+        line-height: 1.1;
+    }
+
+    button {
+        padding: 9px !important;
+        font-size: 12px !important;
+    }
+
+    .flip-card-container {
+        width: 95vw;
+        height: 300px;
+    }
+
+    .flip-selected .flip-icon {
+        font-size: 36px !important;
+    }
+
+    .flip-selected .flip-text {
+        font-size: 10px !important;
+    }
+}
+
+/* Flip Card Animation */
+.flip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.flip-overlay.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.flip-card-container {
+    perspective: 1000px;
+    width: 280px;
+    height: 340px;
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 3px solid #1a5f7a;
+    font-weight: bold;
+}
+
+.flip-front {
+    background: linear-gradient(135deg, #1a5f7a 0%, #0d3f52 100%);
+    color: #fff;
+    font-size: 48px;
+}
+
+.flip-back {
+    background: linear-gradient(135deg, #2a7fa0 0%, #1a5f7a 100%);
+    transform: rotateY(180deg);
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+.flip-icon {
+    font-size: 64px;
+    animation: bounce 0.6s ease-out;
+}
+
+.flip-text {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Flip da carta selecionada */
+.option.flip-selected {
+    animation: flipSelectedAnimation 0.6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+@keyframes flipSelectedAnimation {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+    50% {
+        transform: rotateY(90deg) scale(1.05);
+    }
+    100% {
+        transform: rotateY(0deg) scale(1);
+    }
+}
+
+.flip-selected label {
+    display: none;
+}
+
+.flip-selected input[type="radio"] {
+    display: none;
+}
+
+.flip-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg, #2a7fa0 0%, #1a5f7a 100%);
+    border: 2.5px solid #0d3f52;
+    border-radius: 18px;
+    color: #fff;
+    text-align: center;
+    animation: fadeInFlip 0.4s ease-out 0.3s both;
+}
+
+.flip-selected .flip-icon {
+    font-size: 48px;
+    animation: bounce 0.6s ease-out 0.3s;
+}
+
+.flip-selected .flip-text {
+    font-size: 12px;
+    line-height: 1.3;
+    max-height: 80px;
+    overflow-y: auto;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeInFlip {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
