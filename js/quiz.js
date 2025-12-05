@@ -161,6 +161,7 @@ const professions = {
     },
     "Ofício Pesado": {
         title: "🔨 Mestre de Ofício",
+        
         description: "Especialista em trabalhos pesados, constrói, repara e transforma o mundo físico.",
         details: "A tua força, técnica e dedicação são essenciais para o desenvolvimento da sociedade.",
         flipText: "Ferreiro ou pedreiro. Cria ferramentas, armas e estruturas que duram séculos.",
